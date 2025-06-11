@@ -1,0 +1,454 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-primary-dark text-white">
+    <div class="container mx-auto px-6 py-20">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Transforming Ideas into 
+                    <span class="text-primary-teal">Digital Reality</span>
+                </h1>
+                <p class="text-lg mb-8 text-gray-300">
+                    We specialize in creating cutting-edge websites, mobile apps, and digital solutions that help businesses thrive in the modern world.
+                </p>
+                <div class="space-x-4">
+                    <button class="bg-primary-teal text-white px-6 py-3 rounded-md hover:bg-opacity-90">
+                        Get Started
+                    </button>
+                    <button class="border border-primary-teal text-primary-teal px-6 py-3 rounded-md hover:bg-primary-teal hover:text-white">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="bg-primary-light bg-opacity-10 rounded-lg p-8">
+                    <img 
+                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Tech Innovation Illustration" 
+                        class="w-full h-auto rounded-lg object-cover shadow-lg"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <div class="bg-primary-light bg-opacity-20 rounded-lg p-6">
+                    <img 
+                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Team Collaboration" 
+                        class="w-full h-auto rounded-lg object-cover shadow-lg"
+                    >
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Who We Are</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    At VexTech, we're more than just a technology company. We're innovators, problem-solvers, and digital craftsmen dedicated to transforming businesses through cutting-edge technology solutions.
+                </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    With years of experience and a passionate team of experts, we've helped numerous businesses across various industries achieve their digital transformation goals.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="text-center p-4 bg-primary-light bg-opacity-20 rounded-lg">
+                        <h3 class="text-3xl font-bold text-primary-teal mb-2">100+</h3>
+                        <p class="text-gray-600">Projects Completed</p>
+                    </div>
+                    <div class="text-center p-4 bg-primary-light bg-opacity-20 rounded-lg">
+                        <h3 class="text-3xl font-bold text-primary-teal mb-2">50+</h3>
+                        <p class="text-gray-600">Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 bg-primary-light bg-opacity-10">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">What We Can Do For You</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Delivering cutting-edge solutions to help your business grow in the digital age</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Web Development -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">Web Development</h3>
+                <p class="text-gray-600">Custom websites and web applications built with modern technologies and best practices.</p>
+            </div>
+
+            <!-- Mobile Apps -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">Mobile Apps</h3>
+                <p class="text-gray-600">Native and cross-platform mobile applications that deliver exceptional user experiences.</p>
+            </div>
+
+            <!-- UI/UX Design -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">UI/UX Design</h3>
+                <p class="text-gray-600">User-centered design solutions that create engaging and intuitive digital experiences.</p>
+            </div>
+
+            <!-- Project Management -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">Project Management</h3>
+                <p class="text-gray-600">Efficient project planning, execution, and delivery using agile methodologies.</p>
+            </div>
+
+            <!-- IT Consultation -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">IT Consultation</h3>
+                <p class="text-gray-600">Strategic technology consulting to help businesses make informed decisions.</p>
+            </div>
+
+            <!-- Branding -->
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
+                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark mb-3">Branding</h3>
+                <p class="text-gray-600">Create compelling brand identities that resonate with your target audience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Projects We Are Proud Of</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Delivering excellence through innovation and creativity</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img 
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="E-commerce Platform" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">E-commerce Platform</h3>
+                        <p class="text-primary-light text-sm mb-4">Web Development</p>
+                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img 
+                    src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Mobile Banking App" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Mobile Banking App</h3>
+                        <p class="text-primary-light text-sm mb-4">Mobile Development</p>
+                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img 
+                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Healthcare Platform" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Healthcare Platform</h3>
+                        <p class="text-primary-light text-sm mb-4">Web & Mobile Development</p>
+                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center space-x-2 text-primary-teal hover:text-primary-dark transition">
+                <span>View All Projects</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Process Section -->
+<section class="py-20 bg-primary-light bg-opacity-10">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Process</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">A systematic approach to delivering exceptional results</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Step 1 -->
+            <div class="relative p-6">
+                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">1</div>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Discovery</h3>
+                    <p class="text-gray-600">Understanding your needs, goals, and project requirements</p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative p-6">
+                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">2</div>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Planning</h3>
+                    <p class="text-gray-600">Creating detailed project roadmap and technical specifications</p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="relative p-6">
+                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">3</div>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Development</h3>
+                    <p class="text-gray-600">Building your solution with agile methodology and regular updates</p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="relative p-6">
+                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">4</div>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Launch</h3>
+                    <p class="text-gray-600">Deploying your solution and providing ongoing support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">What Our Clients Say</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Hear from businesses we've helped transform</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">SJ</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-semibold text-primary-dark">Sarah Johnson</h4>
+                        <p class="text-sm text-gray-600">CEO, TechStart</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"VexTech transformed our business with their innovative solutions. Their team's expertise and dedication to quality is unmatched."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">MA</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-semibold text-primary-dark">Mark Anderson</h4>
+                        <p class="text-sm text-gray-600">CTO, HealthTech Solutions</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"The mobile app VexTech developed for us has revolutionized how we interact with our patients. Their technical expertise and healthcare industry knowledge were invaluable."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">EC</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-semibold text-primary-dark">Emily Chen</h4>
+                        <p class="text-sm text-gray-600">Founder, EcoStyle</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"From concept to launch, VexTech delivered beyond our expectations. Their UI/UX expertise helped us create an e-commerce platform that our customers love."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Add 2 more testimonials with different client info and quotes -->
+        </div>
+    </div>
+</section>
+
+
+<!-- Newsletter & Contact Section -->
+<section class="py-20 bg-primary-dark">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Newsletter -->
+            <div class="bg-white rounded-lg p-8 shadow-lg">
+                <h3 class="text-2xl font-bold text-primary-dark mb-6">Stay Updated</h3>
+                <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest tech insights and company updates.</p>
+                <form class="space-y-4">
+                    <div>
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
+                        >
+                    </div>
+                    <button class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact -->
+            <div class="bg-white rounded-lg p-8 shadow-lg">
+                <h3 class="text-2xl font-bold text-primary-dark mb-6">Let's Talk About Your Project</h3>
+                <p class="text-gray-600 mb-6">Ready to transform your idea into reality? Get in touch with us.</p>
+                <form class="space-y-4">
+                    <div>
+                        <input 
+                            type="text" 
+                            placeholder="Your Name" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
+                        >
+                    </div>
+                    <div>
+                        <input 
+                            type="email" 
+                            placeholder="Your Email" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
+                        >
+                    </div>
+                    <div>
+                        <select 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent text-gray-600"
+                            name="project_type"
+                            required
+                        >
+                            <option value="" disabled selected>What's your project about?</option>
+                            <option value="website">Website Development</option>
+                            <option value="mobile">Mobile App Development</option>
+                            <option value="product_design">Product Design</option>
+                            <option value="brand_design">Brand Design</option>
+                            <option value="product_development">Product Development</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea 
+                            placeholder="Tell us about your project" 
+                            rows="4" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
+                        ></textarea>
+                    </div>
+                    <button class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

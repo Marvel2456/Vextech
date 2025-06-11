@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="fixed top-0 left-0 right-0 bg-primary-dark px-6 py-4 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-primary-teal flex items-center space-x-0">
+            <a href="{% url 'index' %}" class="flex items-center space-x-0">
+                <span>VexTech</span>
+                <img src="{% static 'images/VEXTPNG 1.png' %}" alt="VexTech Logo" class="h-10 w-10">
+            </a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="menu-toggle" class="group">
+                <div class="relative w-6 h-5">
+                    <span class="absolute w-6 h-0.5 bg-primary-teal transform transition duration-300 ease-in-out origin-center rotate-0 group-hover:rotate-45 top-0"></span>
+                    <span class="absolute w-6 h-0.5 bg-primary-teal transform transition duration-300 ease-in-out origin-center opacity-100 group-hover:opacity-0 top-2"></span>
+                    <span class="absolute w-6 h-0.5 bg-primary-teal transform transition duration-300 ease-in-out origin-center -rotate-0 group-hover:-rotate-45 top-4"></span>
+                </div>
+            </button>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8">
+            <a href="{% url 'index' %}" class="text-white hover:text-primary-teal transition">Home</a>
+            <a href="{% url 'services' %}" class="text-white hover:text-primary-teal transition">Services</a>
+            <a href="{% url 'about' %}" class="text-white hover:text-primary-teal transition">About</a>
+            <a href="{% url 'projects' %}" class="text-white hover:text-primary-teal transition">Projects</a>
+            <a href="{% url 'contact' %}" class="text-white hover:text-primary-teal transition">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-primary-dark border-t border-primary-teal/20 p-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="{% url 'index' %}" class="text-white hover:text-primary-teal transition px-4 py-2">Home</a>
+                <a href="{% url 'services' %}" class="text-white hover:text-primary-teal transition px-4 py-2">Services</a>
+                <a href="{% url 'about' %}" class="text-white hover:text-primary-teal transition px-4 py-2">About</a>
+                <a href="{% url 'projects' %}" class="text-white hover:text-primary-teal transition px-4 py-2">Projects</a>
+                <a href="{% url 'contact' %}" class="text-white hover:text-primary-teal transition px-4 py-2">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Add this script at the end of your body tag -->
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>

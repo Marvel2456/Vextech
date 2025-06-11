@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Projects | Web, Mobile & Digital Solutions | VexTech{% endblock title %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-20 bg-primary-dark">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Our Projects</h1>
+            <p class="text-gray-300 text-lg">Explore our portfolio of successful digital solutions that have helped businesses transform and grow.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Project Filters -->
+<section class="py-8 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="px-6 py-2 rounded-full bg-primary-teal text-white hover:bg-opacity-90 transition">All</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 hover:bg-primary-teal hover:text-white transition">Web Development</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 hover:bg-primary-teal hover:text-white transition">Mobile Apps</button>
+            <button class="px-6 py-2 rounded-full bg-white text-gray-600 hover:bg-primary-teal hover:text-white transition">UI/UX Design</button>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="py-20">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden">
+                    <img src="{% static 'images/project1.jpg' %}" alt="E-commerce Platform" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-primary-teal text-sm font-semibold">Web Development</span>
+                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">E-commerce Platform</h3>
+                    <p class="text-gray-600">A full-featured e-commerce solution with integrated payment processing and inventory management.</p>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden">
+                    <img src="{% static 'images/project2.jpg' %}" alt="Mobile Banking App" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-primary-teal text-sm font-semibold">Mobile Development</span>
+                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">Mobile Banking App</h3>
+                    <p class="text-gray-600">Secure and user-friendly mobile banking application with real-time transaction processing.</p>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden">
+                    <img src="{% static 'images/project3.jpg' %}" alt="Healthcare Platform" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <span class="text-primary-teal text-sm font-semibold">UI/UX Design</span>
+                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">Healthcare Platform</h3>
+                    <p class="text-gray-600">Intuitive healthcare management system with patient portal and appointment scheduling.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-16">What Our Clients Say</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">A</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold text-primary-dark">Alex Thompson</h4>
+                        <p class="text-gray-600">CEO, TechStart</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"VexTech transformed our business with their e-commerce solution. The attention to detail and customer support were exceptional."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">S</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold text-primary-dark">Sarah Martinez</h4>
+                        <p class="text-gray-600">Product Manager, HealthTech</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"The healthcare platform VexTech developed for us has streamlined our operations and improved patient satisfaction significantly."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">M</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold text-primary-dark">Michael Chen</h4>
+                        <p class="text-gray-600">CTO, FinanceApp</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">"The mobile banking app developed by VexTech exceeded our expectations. Their team's technical expertise and professionalism were outstanding."</p>
+                <div class="flex mt-4 text-primary-teal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-primary-dark">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Build Your Next Project?</h2>
+            <p class="text-gray-300 text-lg mb-8">Let's create something amazing together.</p>
+            <a href="https://wa.me/+2349013828344?text=Hi%20VexTech,%20I%20would%20like%20to%20discuss%20a%20project" 
+               target="_blank"
+               class="inline-block bg-primary-teal text-white px-8 py-4 rounded-lg hover:bg-opacity-90 transition">
+                Start a Conversation
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

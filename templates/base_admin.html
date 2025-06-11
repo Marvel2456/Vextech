@@ -1,0 +1,34 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Vextech| {% block title %} {% endblock title %} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{% static 'images/VEXTJPG 6 primary logo.png' %}" type="image/png">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/dist/style.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="">
+
+        <!-- Tailwind CSS -->
+         {% tailwind_css %}
+        
+    </head>
+    <body class="bg-primary-light">
+        
+        <!-- Navbar -->
+        
+
+        {% block content %}
+
+        {% endblock content %}
+
+        <!-- Footer -->
+        
+        {% include 'partials/whatsapp.html' %}
+        
+        <script src="" async defer></script>
+    </body>
+</html>
