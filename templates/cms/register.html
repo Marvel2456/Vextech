@@ -1,0 +1,124 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Register New Account{% endblock title %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Header -->
+        <div>
+            <img class="mx-auto h-12 w-auto" src="{% static 'images/VEXTJPG 6 primary logo.png' %}" alt="VexTech Logo">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Create your account
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Already have an account?
+                <a href="{% url 'login' %}" class="font-medium text-primary-teal hover:text-primary-teal-dark">
+                    Sign in
+                </a>
+            </p>
+        </div>
+
+        <!-- Registration Form -->
+        <form class="mt-8 space-y-6" action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="rounded-md bg-red-50 p-4">
+                <div class="flex">
+                    <div class="ml-3">
+                        <h3 class="text-sm font-medium text-red-800">
+                            Please correct the following errors:
+                        </h3>
+                        <div class="mt-2 text-sm text-red-700">
+                            <ul class="list-disc pl-5 space-y-1">
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="rounded-md shadow-sm -space-y-px">
+                <!-- Full Name -->
+                <div>
+                    <label for="full_name" class="sr-only">Full Name</label>
+                    <input id="full_name" name="name" type="text" required 
+                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-teal focus:border-primary-teal focus:z-10 sm:text-sm"
+                           placeholder="Full Name">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="sr-only">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required 
+                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-teal focus:border-primary-teal focus:z-10 sm:text-sm"
+                           placeholder="Email address">
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" required 
+                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-teal focus:border-primary-teal focus:z-10 sm:text-sm"
+                           placeholder="Password">
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="password_confirmation" class="sr-only">Confirm Password</label>
+                    <input id="password_confirmation" name="password1" type="password" required 
+                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-teal focus:border-primary-teal focus:z-10 sm:text-sm"
+                           placeholder="Confirm Password">
+                </div>
+            </div>
+
+            <!-- Password Requirements -->
+            <div class="text-sm text-gray-600">
+                <h4 class="font-medium mb-2">Password requirements:</h4>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>At least 8 characters long</li>
+                    <li>Must include uppercase and lowercase letters</li>
+                    <li>Must include at least one number</li>
+                    <li>Must include at least one special character</li>
+                </ul>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="flex items-center">
+                <input id="terms" name="terms" type="checkbox" required
+                       class="h-4 w-4 text-primary-teal focus:ring-primary-teal border-gray-300 rounded">
+                <label for="terms" class="ml-2 block text-sm text-gray-900">
+                    I agree to the 
+                    <a href="#" class="font-medium text-primary-teal hover:text-primary-teal-dark">
+                        Terms and Conditions
+                    </a>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit" 
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-teal hover:bg-primary-teal-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-teal">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-primary-teal-light group-hover:text-primary-teal-light" 
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
+                             aria-hidden="true">
+                            <path fill-rule="evenodd" 
+                                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" 
+                                  clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    Create Account
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

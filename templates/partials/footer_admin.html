@@ -1,0 +1,144 @@
+<footer class="bg-white border-t border-gray-200 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase mb-4">
+                        Quick Links
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="" class="text-gray-500 hover:text-primary-teal">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-500 hover:text-primary-teal">
+                                New Post
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-500 hover:text-primary-teal">
+                                New Project
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Help & Support -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase mb-4">
+                        Help & Support
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="" class="text-gray-500 hover:text-primary-teal">
+                                Documentation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-500 hover:text-primary-teal">
+                                Support Center
+                            </a>
+                        </li>
+                        <li>
+                            <button id="feedback-btn" class="text-gray-500 hover:text-primary-teal">
+                                Send Feedback
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- System Info -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase mb-4">
+                        System Info
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>Version: 1.0.0</li>
+                        <li>Last Updated: {% now "F j, Y" %}</li>
+                        <li>
+                            <span id="server-status" class="flex items-center">
+                                Server Status: 
+                                <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="ml-1">Online</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-8 pt-4 border-t border-gray-200">
+                <p class="text-sm text-gray-500 text-center">
+                    &copy; {% now "Y" %} VexTech CMS. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Send Feedback</h3>
+                <form id="feedback-form" class="space-y-4">
+                    <div>
+                        <textarea
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-teal"
+                            rows="4"
+                            placeholder="Your feedback helps us improve"
+                        ></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button
+                            type="button"
+                            id="close-modal"
+                            class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            class="px-4 py-2 bg-primary-teal text-white rounded-md hover:bg-opacity-90"
+                        >
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Add this script to your template or include in your JS bundle -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const feedbackBtn = document.getElementById('feedback-btn');
+        const feedbackModal = document.getElementById('feedback-modal');
+        const closeModal = document.getElementById('close-modal');
+        const feedbackForm = document.getElementById('feedback-form');
+
+        feedbackBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('hidden');
+        });
+
+        closeModal.addEventListener('click', () => {
+            feedbackModal.classList.add('hidden');
+        });
+
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your feedback submission logic here
+            feedbackModal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                feedbackModal.classList.add('hidden');
+            }
+        });
+    });
+</script>
