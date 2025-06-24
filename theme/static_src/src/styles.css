@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @layer components {
+    #sidebar {
+        @apply z-30;
+    }
+    
+    #sidebar-overlay {
+        @apply lg:hidden;
+    }
+} */
+
+
+@layer components {
+    #sidebar {
+        @apply w-64 transition-all duration-300 ease-in-out;
+    }
+
+    #sidebar.collapsed {
+        @apply w-20;
+    }
+
+    .sidebar-text {
+        @apply transition-opacity duration-300;
+    }
+
+    @media (max-width: 1024px) {
+        #sidebar {
+            @apply transform;
+        }
+        
+        #sidebar.collapsed {
+            @apply -translate-x-full;
+        }
+    }
+}

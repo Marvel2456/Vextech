@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib import messages
 from .forms import CustomUserCreationForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.template.response import TemplateResponse
+
 
 # Create your views here.
 
@@ -39,7 +43,21 @@ def loginView(request):
     
     return render(request, 'cms/login.html')
 
+
+@login_required(login_url='login')
+def logoutView(request):
+    if request.method == 'POST':
+        auth_logout(request)
+        messages.success(request, 'You have been logged out successfully.')
+        return redirect('login')
+    
+    return TemplateResponse(request, 'cms/logout.html', {})
+
+
+
 @login_required(login_url='login')
 def dashboard(request):
-    
-    return render(request, 'cms/dashboard.html')
+    context = {
+        "first_name": request.user.name.split()[0]
+    }
+    return render(request, 'cms/dashboard.html', context)
