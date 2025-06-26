@@ -9,6 +9,20 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.logoutView, name='logout'),
 
+    # Navigation URLs
+    path('view_contact', views.viewContact, name='view_contact'),
+    path('view_projects', views.viewProjects, name='view_projects'),
+    path('load_project_modal', views.loadProjectModal, name='load_project_modal'),
+    path('edit_project/<uuid:pk>/', views.editProject, name='edit_project'),
+    path('load_edit_project_modal/<uuid:pk>/', views.loadEditProjectModal, name='load_edit_project_modal'),
+    path('delete_project/<uuid:pk>/', views.deleteProject, name='delete_project'),
+    path('load_delete_project_modal/<uuid:pk>/', views.loadDeleteProjectModal, name='load_delete_project_modal'),
+    path('create_project', views.createProject, name='create_project'),
+    path('view_services', views.viewServices, name='view_services'),
+    path('view_newsletter', views.NewsletterView, name='view_newsletter'),
+    path('view_visits', views.viewVisits, name='view_visits'),
+
+    # path('view_project/<slug:slug>/', views.viewProject, name='view_project'),
     # Password reset URLs
     path('password-reset/', auth_views.PasswordResetView.as_view(
         template_name='cms/password_reset.html',

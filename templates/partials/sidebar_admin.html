@@ -28,6 +28,39 @@
                     <span class="sidebar-text ml-3">Dashboard</span>
                     
                 </a>
+                <a href="{% url 'view_projects' %}" 
+                   class="flex items-center px-6 py-3 hover:bg-primary-teal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M12 8v4m0 0l3-3m-3 3l-3-3m9 5a2 2 0 11-4 0 2 2 0 014 0zm-6 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span class="sidebar-text ml-3">Projects</span>
+                </a>
+                <a href="{% url 'view_contact' %}"
+                     class="flex items-center px-6 py-3 hover:bg-primary-teal">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                d="M3 8l7.5 4.5L18 8m-7.5 4.5L3 16m7.5-4.5L18 16m0-8l-7.5 4.5L3 8m15 0l-7.5 4.5L3 8"/>
+                      </svg>
+                      <span class="sidebar-text ml-3">Contact</span>
+                </a>
+                <a href="{% url 'view_visits' %}"
+                    class="flex items-center px-6 py-3 hover:bg-primary-teal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a6 6 0 110 12 6 6 0 010-12zm0 8a2 2 0 100-4 2 2 0 000 4z"/>
+                    </svg>
+                    <span class="sidebar-text ml-3">Visits</span>
+                </a>
+                <a href="{% url 'view_newsletter' %}"
+                     class="flex items-center px-6 py-3 hover:bg-primary-teal">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                d="M3 8l7.5 4.5L18 8m-7.5 4.5L3 16m7.5-4.5L18 16m0-8l-7.5 4.5L3 8m15 0l-7.5 4.5L3 8"/>
+                      </svg>
+                      <span class="sidebar-text ml-3">Newsletter</span>
+                </a>
+
             </li>
             <!-- ...other menu items with same structure... -->
         </ul>

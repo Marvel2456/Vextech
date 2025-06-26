@@ -1,0 +1,50 @@
+<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+    <form 
+        method="POST" 
+        enctype="multipart/form-data"
+        hx-post="{% url 'create_project' %}" 
+        hx-target="#modal" 
+        hx-swap="outerHTML"
+        class="space-y-4"
+    >
+        {% csrf_token %}
+        <h2 class="text-xl font-semibold mb-2">Add Project</h2>
+
+        <input name="name" placeholder="Client Name" class="w-full border p-2 rounded" required />
+        <select name="project_type" class="w-full border p-2 rounded" required>
+            <option value="" disabled selected>Select project type</option>
+            <option value="web">Web Development</option>
+            <option value="mobile">Mobile App Development</option>
+            <option value="design">Design Services</option>
+            <option value="consulting">Consulting Services</option>
+            <option value="other">Other</option>
+        </select>
+
+
+        <input name="title" placeholder="Title" class="w-full border p-2 rounded" required />
+        <textarea name="description" placeholder="Description" class="w-full border p-2 rounded" required></textarea>
+        <input type="file" name="image" class="w-full border p-2 rounded" />
+        <input name="link" placeholder="Project Link" class="w-full border p-2 rounded" />
+        
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="is_featured" class="mr-2"> Feature this project
+        </label>
+
+        <div class="flex justify-end space-x-2">
+            <button type="submit" class="bg-primary-teal text-white px-4 py-2 rounded hover:bg-primary-dark">Save</button>
+            <button type="button"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+                    onclick="document.getElementById('modal').classList.add('hidden')">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.body.addEventListener('htmx:afterSwap', (e) => {
+        if (e.detail.target.id === "modal") {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+    });
+</script>

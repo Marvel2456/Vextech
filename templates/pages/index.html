@@ -27,7 +27,7 @@
             <div class="md:w-1/2">
                 <div class="bg-primary-light bg-opacity-10 rounded-lg p-8">
                     <img 
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="{% static 'images/vexhero.jpg' %}"
                         alt="Tech Innovation Illustration" 
                         class="w-full h-auto rounded-lg object-cover shadow-lg"
                     >
@@ -44,7 +44,7 @@
             <div class="md:w-1/2">
                 <div class="bg-primary-light bg-opacity-20 rounded-lg p-6">
                     <img 
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="{% static 'images/vexabout.jpg' %}" 
                         alt="Team Collaboration" 
                         class="w-full h-auto rounded-lg object-cover shadow-lg"
                     >
@@ -160,57 +160,37 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project Card 1 -->
+            {% for project in top_projects %}
             <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                <img 
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="E-commerce Platform" 
-                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-                >
+                {% if project.image %}
+                    <img 
+                        src="{{ project.image.url }}"
+                        alt="{{ project.title }}" 
+                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+                    >
+                {% endif %}
                 <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
                     <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">E-commerce Platform</h3>
-                        <p class="text-primary-light text-sm mb-4">Web Development</p>
-                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ project.title }}</h3>
+                        <p class="text-primary-light text-sm mb-4">{{ project.project_type }}</p>
+                        {% if project.link %}
+                        <a href="{{ project.link }}" target="_blank"
+                           class="inline-block px-4 py-2 rounded bg-primary-teal text-white font-semibold shadow hover:bg-primary-dark transition-colors duration-200">
+                            View Project →
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-
-            <!-- Project Card 2 -->
-            <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                <img 
-                    src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Mobile Banking App" 
-                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Mobile Banking App</h3>
-                        <p class="text-primary-light text-sm mb-4">Mobile Development</p>
-                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
-                    </div>
-                </div>
+            {% empty %}
+            <div class="col-span-3 text-center text-gray-500 py-12">
+                No featured projects yet.
             </div>
-
-            <!-- Project Card 3 -->
-            <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                <img 
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Healthcare Platform" 
-                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Healthcare Platform</h3>
-                        <p class="text-primary-light text-sm mb-4">Web & Mobile Development</p>
-                        <button class="text-primary-teal hover:text-white transition">View Project →</button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         
         <div class="text-center mt-12">
-            <a href="#" class="inline-flex items-center space-x-2 text-primary-teal hover:text-primary-dark transition">
+            <a href="{% url 'view_projects' %}" class="inline-flex items-center space-x-2 text-primary-teal hover:text-primary-dark transition">
                 <span>View All Projects</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -388,15 +368,21 @@
             <div class="bg-white rounded-lg p-8 shadow-lg">
                 <h3 class="text-2xl font-bold text-primary-dark mb-6">Stay Updated</h3>
                 <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest tech insights and company updates.</p>
-                <form class="space-y-4">
+                <form class="space-y-4" method="POST" action="">
+                    {% csrf_token %}
+                    {% if newsletter_success %}
+                        <div class="p-3 bg-green-100 text-green-700 rounded">Thank you for subscribing!</div>
+                    {% endif %}
                     <div>
                         <input 
+                            name="email"
+                            required
                             type="email" 
                             placeholder="Enter your email" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
                         >
                     </div>
-                    <button class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
+                    <button type="submit" class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
                         Subscribe
                     </button>
                 </form>
@@ -406,9 +392,15 @@
             <div class="bg-white rounded-lg p-8 shadow-lg">
                 <h3 class="text-2xl font-bold text-primary-dark mb-6">Let's Talk About Your Project</h3>
                 <p class="text-gray-600 mb-6">Ready to transform your idea into reality? Get in touch with us.</p>
-                <form class="space-y-4">
+                <form class="space-y-4" method="POST" action="">
+                    {% csrf_token %}
+                    {% if contact_success %}
+                        <div class="p-3 bg-green-100 text-green-700 rounded">Your message has been sent!</div>
+                    {% endif %}
                     <div>
                         <input 
+                            name="name"
+                            required
                             type="text" 
                             placeholder="Your Name" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
@@ -416,34 +408,32 @@
                     </div>
                     <div>
                         <input 
+                            name="email"
+                            required
                             type="email" 
                             placeholder="Your Email" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
                         >
                     </div>
                     <div>
-                        <select 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent text-gray-600"
-                            name="project_type"
+                        <input 
+                            name="subject"
                             required
+                            type="text" 
+                            placeholder="Subject" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
                         >
-                            <option value="" disabled selected>What's your project about?</option>
-                            <option value="website">Website Development</option>
-                            <option value="mobile">Mobile App Development</option>
-                            <option value="product_design">Product Design</option>
-                            <option value="brand_design">Brand Design</option>
-                            <option value="product_development">Product Development</option>
-                            <option value="others">Others</option>
-                        </select>
                     </div>
                     <div>
                         <textarea 
+                            name="message"
+                            required
                             placeholder="Tell us about your project" 
                             rows="4" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
                         ></textarea>
                     </div>
-                    <button class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
+                    <button type="submit" class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
                         Send Message
                     </button>
                 </form>

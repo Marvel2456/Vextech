@@ -1,0 +1,50 @@
+<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+    <form 
+        method="POST" 
+        enctype="multipart/form-data"
+        hx-post="{% url 'edit_project' project.id %}" 
+        hx-target="#modal" 
+        hx-swap="outerHTML"
+        class="space-y-4"
+    >
+        {% csrf_token %}
+        <h2 class="text-xl font-semibold mb-2">Edit Project</h2>
+
+        <input name="name" value="{{ project.name }}" placeholder="Client Name" class="w-full border p-2 rounded" required />
+        <select name="project_type" class="w-full border p-2 rounded" required>
+            <option value="" disabled>Select project type</option>
+            <option value="web" {% if project.project_type == "web" %}selected{% endif %}>Web Development</option>
+            <option value="mobile" {% if project.project_type == "mobile" %}selected{% endif %}>Mobile App Development</option>
+            <option value="design" {% if project.project_type == "design" %}selected{% endif %}>Design Services</option>
+            <option value="consulting" {% if project.project_type == "consulting" %}selected{% endif %}>Consulting Services</option>
+            <option value="other" {% if project.project_type == "other" %}selected{% endif %}>Other</option>
+        </select>
+        <input name="title" value="{{ project.title }}" placeholder="Title" class="w-full border p-2 rounded" required />
+        <textarea name="description" placeholder="Description" class="w-full border p-2 rounded" required>{{ project.description }}</textarea>
+        {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-24 h-24 object-cover rounded mb-2">
+        {% endif %}
+        <input type="file" name="image" class="w-full border p-2 rounded" />
+        <input name="link" value="{{ project.link }}" placeholder="Project Link" class="w-full border p-2 rounded" />
+
+        <div class="flex justify-end space-x-2 pt-4">
+            <button type="button"
+                class="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+                onclick="document.getElementById('modal').classList.add('hidden')">
+                Cancel
+            </button>
+            <button type="submit"
+                class="bg-primary-teal text-white px-4 py-2 rounded hover:bg-primary-dark">
+                Save Changes
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.body.addEventListener('htmx:afterSwap', (e) => {
+        if (e.detail.target.id === "modal") {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+    });
+</script>

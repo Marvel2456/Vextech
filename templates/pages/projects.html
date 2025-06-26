@@ -31,49 +31,33 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project Card 1 -->
+            {% for project in projects %}
             <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
                 <div class="relative overflow-hidden">
-                    <img src="{% static 'images/project1.jpg' %}" alt="E-commerce Platform" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}"
+                             class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    {% endif %}
                     <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
+                        {% if project.link %}
+                        <a href="{{ project.link }}" target="_blank"
+                           class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">
+                            View Project
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="p-6">
-                    <span class="text-primary-teal text-sm font-semibold">Web Development</span>
-                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">E-commerce Platform</h3>
-                    <p class="text-gray-600">A full-featured e-commerce solution with integrated payment processing and inventory management.</p>
+                    <span class="text-primary-teal text-sm font-semibold">{{ project.project_type }}</span>
+                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">{{ project.title }}</h3>
+                    <p class="text-gray-600">{{ project.description }}</p>
                 </div>
             </div>
-
-            <!-- Project Card 2 -->
-            <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
-                <div class="relative overflow-hidden">
-                    <img src="{% static 'images/project2.jpg' %}" alt="Mobile Banking App" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <span class="text-primary-teal text-sm font-semibold">Mobile Development</span>
-                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">Mobile Banking App</h3>
-                    <p class="text-gray-600">Secure and user-friendly mobile banking application with real-time transaction processing.</p>
-                </div>
+            {% empty %}
+            <div class="col-span-3 text-center text-gray-500 py-12">
+                No projects found.
             </div>
-
-            <!-- Project Card 3 -->
-            <div class="group bg-white rounded-lg overflow-hidden shadow-lg">
-                <div class="relative overflow-hidden">
-                    <img src="{% static 'images/project3.jpg' %}" alt="Healthcare Platform" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-primary-dark bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="#" class="px-6 py-3 bg-primary-teal text-white rounded-lg hover:bg-opacity-90 transition">View Project</a>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <span class="text-primary-teal text-sm font-semibold">UI/UX Design</span>
-                    <h3 class="text-xl font-bold text-primary-dark mt-2 mb-3">Healthcare Platform</h3>
-                    <p class="text-gray-600">Intuitive healthcare management system with patient portal and appointment scheduling.</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
