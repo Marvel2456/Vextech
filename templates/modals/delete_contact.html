@@ -1,0 +1,32 @@
+<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <form 
+        method="POST"
+        hx-post="{% url 'delete_contact' contact.id %}"
+        hx-target="#modal"
+        hx-swap="outerHTML"
+        class="space-y-4"
+    >
+        {% csrf_token %}
+        <h2 class="text-xl font-semibold mb-4 text-red-600">Delete Contact</h2>
+        <p>Are you sure you want to remove <span class="font-bold">{{ contact.email }}</span> from the contact list?</p>
+        <div class="flex justify-end space-x-2 pt-4">
+            <button type="button"
+                class="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+                onclick="document.getElementById('modal').classList.add('hidden')">
+                Cancel
+            </button>
+            <button type="submit"
+                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                Delete
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.body.addEventListener('htmx:afterSwap', (e) => {
+        if (e.detail.target.id === "modal") {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+    });
+</script>

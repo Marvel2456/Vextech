@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import ContactMessage, NewsletterSubscription, Visit, Service, Project
+from django.db.models import Count
 
 from django.template.response import TemplateResponse
 
@@ -64,20 +65,87 @@ def dashboard(request):
     }
     return render(request, 'cms/dashboard.html', context)
 
-
+@login_required(login_url='login')
 def viewContact(request):
     contacts = ContactMessage.objects.all()
-    return render(request, 'cms/contacts.html', {'contacts': contacts})
+    context = {
+        'contacts': contacts,
+        'first_name': request.user.name.split()[0]
+    }
+    return render(request, 'cms/contacts.html', context)
 
 
+def loadViewContactModal(request, pk):
+    contact = get_object_or_404(ContactMessage, pk=pk)
+    return render(request, 'modals/contact_detail.html', {'contact': contact})
+
+
+def loadEditContactModal(request, pk):
+    contact = get_object_or_404(ContactMessage, pk=pk)
+    return render(request, 'modals/edit_contact.html', {'contact': contact})
+
+def editContact(request, pk):
+    contact = get_object_or_404(ContactMessage, pk=pk)
+    if request.method == 'POST':
+        contact.name = request.POST.get('name')
+        contact.email = request.POST.get('email')
+        contact.subject = request.POST.get('subject')
+        contact.message = request.POST.get('message')
+        contact.save()
+        messages.success(request, 'Contact message updated successfully!')
+        return HttpResponse('<div id="modal" class="hidden"></div><script>location.reload()</script>')
+    
+    # For GET (to render modal form)
+    return render(request, 'modals/edit_contact.html', {'contact': contact})
+
+
+def loadDeleteContactModal(request, pk):
+    contact = get_object_or_404(ContactMessage, pk=pk)
+    return render(request, 'modals/delete_contact.html', {'contact': contact})
+
+def deleteContact(request, pk):
+    contact = get_object_or_404(ContactMessage, pk=pk)
+    if request.method == 'POST':
+        contact.delete()
+        messages.success(request, 'Contact message deleted successfully!')
+        return HttpResponse('<div id="modal" class="hidden"></div><script>location.reload()</script>')
+    # return render(request, 'modals/delete_contact.html', {'contact': contact})
+
+
+@login_required(login_url='login')
 def NewsletterView(request):
-    subscriptions = NewsletterSubscription.objects.all()
-    return render(request, 'cms/newsletter.html', {'subscriptions': subscriptions})
+    newsletters = NewsletterSubscription.objects.all()
 
+    context = {
+        'newsletters': newsletters,
+        'first_name': request.user.name.split()[0]
+    }
+    return render(request, 'cms/newsletter.html', context)
+
+
+def loadDeleteNewsletterModal(request, pk):
+    newsletter = get_object_or_404(NewsletterSubscription, pk=pk)
+    return render(request, 'modals/delete_newsletter.html', {'newsletter': newsletter})
+
+def deleteNewsletter(request, pk):
+    newsletter = get_object_or_404(NewsletterSubscription, pk=pk)
+    if request.method == 'POST':
+        newsletter.delete()
+        # return render(request, 'partials/success_message.html', {'message': 'Project deleted!'})
+        messages.success(request, 'Newsletter deleted successfully!')
+        return HttpResponse('<div id="modal" class="hidden"></div><script>location.reload()</script>')
 
 def viewVisits(request):
-    visits = Visit.objects.all()
-    return render(request, 'cms/visits.html', {'visits': visits})
+    sources = Visit.objects.values('source').annotate(count=Count('id')).order_by('-count')
+    domain = request.build_absolute_uri('/')[:-1]  # remove trailing slash
+    visits = Visit.objects.all().order_by('-visited_at')
+    context = {
+        'sources': sources,
+        'visits': visits,
+        'domain': domain,
+        'first_name': request.user.name.split()[0]
+    }
+    return render(request, 'cms/visits.html', context)
 
 
 def viewServices(request):
@@ -141,6 +209,7 @@ def loadDeleteProjectModal(request, pk):
     project = get_object_or_404(Project, pk=pk)
     return render(request, 'modals/delete_project.html', {'project': project})
 
+
 def deleteProject(request, pk):
     project = get_object_or_404(Project, pk=pk)
     if request.method == 'POST':
@@ -151,32 +220,6 @@ def deleteProject(request, pk):
         return HttpResponse('<div id="modal" class="hidden"></div><script>location.reload()</script>')
     # return render(request, 'modals/delete_project.html', {'project': project})
     
-# def createProject(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         project_type = request.POST.get('project_type')
-#         title = request.POST.get('title')
-#         description = request.POST.get('description')
-#         image = request.FILES.get('image')
-#         link = request.POST.get('link')
-#         is_featured = request.POST.get('is_featured') == 'on'
-        
-#         project = Project(
-#             name=name,
-#             project_type=project_type,
-#             title=title,
-#             description=description,
-#             image=image,
-#             link=link,
-#             is_featured=is_featured
-#         )
-#         project.save()
-
-        
-#         messages.success(request, 'Project created successfully!')
-        
-#         return HttpResponse(render(request, 'modals/create_project.html', {'project': project}))
-
 
 def viewProjects(request):
     projects = Project.objects.all()

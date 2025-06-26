@@ -1,0 +1,45 @@
+<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <div class="mb-4 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-primary-dark">Contact Details</h2>
+        <button type="button"
+            class="text-gray-400 hover:text-primary-teal"
+            onclick="document.getElementById('modal').classList.add('hidden')"
+            title="Close"
+        >
+            <!-- Heroicons X (Close) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+    <div class="space-y-3">
+        <div>
+            <span class="font-semibold text-gray-700">Name:</span>
+            <span class="text-gray-900">{{ contact.name }}</span>
+        </div>
+        <div>
+            <span class="font-semibold text-gray-700">Email:</span>
+            <span class="text-gray-900">{{ contact.email }}</span>
+        </div>
+        <div>
+            <span class="font-semibold text-gray-700">Subject:</span>
+            <span class="text-gray-900">{{ contact.subject }}</span>
+        </div>
+        <div>
+            <span class="font-semibold text-gray-700">Message:</span>
+            <div class="text-gray-900 whitespace-pre-line">{{ contact.message }}</div>
+        </div>
+        <div>
+            <span class="font-semibold text-gray-700">Received:</span>
+            <span class="text-gray-900">{{ contact.sent_at|date:"Y-m-d H:i" }}</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.body.addEventListener('htmx:afterSwap', (e) => {
+        if (e.detail.target.id === "modal") {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+    });
+</script>

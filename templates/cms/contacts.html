@@ -1,0 +1,68 @@
+{% extends 'base_admin.html' %}
+{% block title %}Contact Messages{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded shadow">
+    <h2 class="text-2xl font-bold mb-6">Contact Messages</h2>
+    {% if contacts %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Subject</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Received</th>
+                        <th class="px-4 py-2"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    {% for contact in contacts %}
+                    <tr>
+                        <td class="px-4 py-2">{{ contact.name }}</td>
+                        <td class="px-4 py-2">{{ contact.email }}</td>
+                        <td class="px-4 py-2">{{ contact.subject }}</td>
+                        <td class="px-4 py-2">{{ contact.sent_at|date:"Y-m-d H:i" }}</td>
+                        <td class="px-4 py-2 text-right flex space-x-2 justify-end">
+                            <!-- View Icon Button -->
+                            <button 
+                                hx-get="{% url 'load_view_contact_modal' contact.id %}"
+                                hx-target="#modal"
+                                hx-swap="innerHTML"
+                                class="p-2 rounded-full bg-primary-light hover:bg-primary-teal transition"
+                                title="View"
+                            >
+                                <!-- Heroicons Eye -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c0 5-9 9-9 9s-9-4-9-9a9 9 0 0118 0z" />
+                                </svg>
+                            </button>
+                            
+                            <!-- Delete Icon Button -->
+                            <button 
+                                hx-get="{% url 'load_delete_contact_modal' contact.id %}"
+                                hx-target="#modal"
+                                hx-swap="innerHTML"
+                                class="p-2 rounded-full bg-red-100 hover:bg-red-200 transition"
+                                title="Delete"
+                            >
+                                <!-- Heroicons Trash -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M10 3h4a1 1 0 011 1v2H9V4a1 1 0 011-1z" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="text-gray-500 text-center py-8">No contact messages yet.</div>
+    {% endif %}
+</div>
+
+<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"></div>
+{% endblock %}

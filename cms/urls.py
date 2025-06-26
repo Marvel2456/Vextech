@@ -11,6 +11,11 @@ urlpatterns = [
 
     # Navigation URLs
     path('view_contact', views.viewContact, name='view_contact'),
+    path('load_view_contact_modal/<uuid:pk>/', views.loadViewContactModal, name='load_view_contact_modal'),
+    path('load_edit_contact_modal/<uuid:pk>/', views.loadEditContactModal, name='load_edit_contact_modal'),
+    path('delete_contact/<uuid:pk>/', views.deleteContact, name='delete_contact'),
+    path('load_delete_contact_modal/<uuid:pk>/', views.loadDeleteContactModal, name='load_delete_contact_modal'),
+    path('edit_contact/<uuid:pk>/', views.editContact, name='edit_contact'),
     path('view_projects', views.viewProjects, name='view_projects'),
     path('load_project_modal', views.loadProjectModal, name='load_project_modal'),
     path('edit_project/<uuid:pk>/', views.editProject, name='edit_project'),
@@ -20,6 +25,8 @@ urlpatterns = [
     path('create_project', views.createProject, name='create_project'),
     path('view_services', views.viewServices, name='view_services'),
     path('view_newsletter', views.NewsletterView, name='view_newsletter'),
+    path('load_delete_newsletter_modal/<uuid:pk>/', views.loadDeleteNewsletterModal, name='load_delete_newsletter_modal'),
+    path('delete_newsletter/<uuid:pk>/', views.deleteNewsletter, name='delete_newsletter'),
     path('view_visits', views.viewVisits, name='view_visits'),
 
     # path('view_project/<slug:slug>/', views.viewProject, name='view_project'),

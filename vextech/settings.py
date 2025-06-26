@@ -68,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # Custom middleware to log visits
+    'pages.middleware.VisitLoggerMiddleware', 
 ]
 
 ROOT_URLCONF = 'vextech.urls'
