@@ -1,5 +1,4 @@
 {% load static tailwind_tags %}
-{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,15 +7,20 @@
         <title> Vextech| {% block title %} {% endblock title %} </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="{% static 'images/VEXTJPG 6 primary logo.png' %}" type="image/png">
-        {% comment %} <link rel="stylesheet" href="{% static 'css/dist/style.css' %}"> {% endcomment %}
-        <link rel="stylesheet" href="">
+        <link rel="icon" href="{% static 'images/VEXTPNG2DARK.png' %}" type="image/png">
+        <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
 
         <!-- Tailwind CSS -->
-         {% tailwind_css %}
+        {% tailwind_css %}
+
+        <!-- Alpine.js Plugins -->
+        <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+        <!-- Alpine.js Core -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="{% static 'js/htmx.min.js' %}" defer></script>
         
     </head>
-    <body class="bg-primary-light">
+    <body class="bg-background-light font-satoshi text-primary-dark overflow-x-hidden">
         
         <!-- Navbar -->
         {% include 'partials/navbar.html' %}
@@ -29,6 +33,6 @@
         {% include 'partials/footer.html' %}
         {% include 'partials/whatsapp.html' %}
         
-        <script src="" async defer></script>
+        {% block extra_js %}{% endblock extra_js %}
     </body>
 </html>

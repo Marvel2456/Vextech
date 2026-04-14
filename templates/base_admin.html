@@ -1,4 +1,5 @@
-{% load static tailwind_tags %}
+{% comment %} {% load static tailwind_tags %} {% endcomment %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -7,9 +8,10 @@
     <title>VexTech CMS | {% block title %}{% endblock title %}</title>
     <meta name="description" content="VexTech Content Management System">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{% static 'images/VEXTJPG 6 primary logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/dist/style.css' %}">
+    <link rel="icon" href="{% static 'images/VEXTPNG2DARK.png' %}" type="image/png">
 
-    {% tailwind_css %}
+    {% comment %} {% tailwind_css %} {% endcomment %}
 
     <style>
         #sidebar, #main-content, .sidebar-text {

@@ -6,7 +6,7 @@ from .forms import ContactMessageForm, NewsletterSubscriptionForm
 
 
 def IndexView(request):
-    top_projects = Project.objects.filter(is_featured=True).order_by('-id')[:3]
+    top_projects = Project.objects.all().order_by('-created_at')
     newsletter_success = False
     contact_success = False
     if request.method == "POST":

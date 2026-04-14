@@ -1,444 +1,586 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+
+{% block title %}Transforming Ideas into Digital Reality{% endblock title %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-primary-dark text-white">
-    <div class="container mx-auto px-6 py-20">
-        <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                    Transforming Ideas into 
-                    <span class="text-primary-teal">Digital Reality</span>
-                </h1>
-                <p class="text-lg mb-8 text-gray-300">
-                    We specialize in creating cutting-edge websites, mobile apps, and digital solutions that help businesses thrive in the modern world.
-                </p>
-                <div class="space-x-4">
-                    <button class="bg-primary-teal text-white px-6 py-3 rounded-md hover:bg-opacity-90">
-                        Get Started
-                    </button>
-                    <button class="border border-primary-teal text-primary-teal px-6 py-3 rounded-md hover:bg-primary-teal hover:text-white">
-                        Learn More
-                    </button>
-                </div>
+<div class="size-full bg-background-light overflow-x-hidden">
+    <!-- Hero Section -->
+    <style>
+        @keyframes heroFadeRight {
+            from { opacity: 0; transform: translateX(24px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            position: relative;
+            margin-top: 56px;
+            height: calc(100vh - 56px);
+            min-height: 520px;
+            max-height: 720px;
+            background: #F8FAFB;
+            border-top: 1px solid rgba(9,24,32,0.08);
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 2.5vw, 36px);
+            height: 100%;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: clamp(44px, 7vh, 90px);
+            right: 0;
+            width: clamp(260px, 28vw, 380px);
+            z-index: 10;
+            animation: heroFadeRight 0.85s cubic-bezier(0.22,1,0.36,1) 0.15s both;
+        }
+        .hero-text h1 {
+            font-family: 'Satoshi', sans-serif;
+            font-size: clamp(18px, 1.8vw, 26px);
+            font-weight: 600;
+            color: #091820;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin: 0 0 10px;
+        }
+        .hero-text p {
+            font-family: 'Satoshi', sans-serif;
+            font-size: clamp(13px, 1.1vw, 17px);
+            color: rgba(9,24,32,0.72);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hero-logo {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: clamp(420px, 66vw, 960px);
+            z-index: 5;
+            animation: heroFadeUp 1.1s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+        }
+        .hero-logo img { width: 100%; height: auto; display: block; }
+    </style>
+
+    <section class="hero-section">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1>Transforming Ideas into Digital Reality.</h1>
+                <p>We specialize in creating cutting-edge websites, mobile apps, and digital solutions that help businesses thrive in the modern world.</p>
             </div>
-            <div class="md:w-1/2">
-                <div class="bg-primary-light bg-opacity-10 rounded-lg p-8">
-                    <img 
-                        src="{% static 'images/vexhero.jpg' %}"
-                        alt="Tech Innovation Illustration" 
-                        class="w-full h-auto rounded-lg object-cover shadow-lg"
-                    >
+            <div class="hero-logo">
+                <img src="{% static 'images/VEXTPNG-logo.png' %}" alt="VexTech">
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Details Section (About) -->
+    <section x-data="{ shown: false }" x-intersect.once="shown = true"
+             class="relative flex flex-col items-center px-[20px] md:px-[40px] lg:px-[60px] py-[48px] md:py-[64px] lg:py-[80px] bg-background-light z-10">
+        <div class="max-w-[1200px] mx-auto">
+            <div :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
+                 class="transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] max-w-[434px] mx-auto">
+                <h2 class="font-satoshi font-medium text-primary-dark text-[18px] md:text-[20px] leading-[1.6] px-[10px] mb-2">
+                    WHO ARE WE?
+                </h2>
+                <div class="flex flex-col gap-4 text-primary-dark/80">
+                    <p class="font-satoshi text-[14px] md:text-[16px] leading-[1.5] px-[10px]">
+                        At VexTech, we're more than just a technology company. We're innovators, problem-solvers, and digital craftsmen dedicated to transforming businesses through cutting-edge technology solutions.
+                    </p>
+                    <p class="font-satoshi text-[14px] md:text-[16px] leading-[1.5] px-[10px]">
+                        With years of experience and a passionate team of experts, we've helped numerous businesses across various industries achieve their digital transformation goals.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- About Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <div class="bg-primary-light bg-opacity-20 rounded-lg p-6">
-                    <img 
-                        src="{% static 'images/vexabout.jpg' %}" 
-                        alt="Team Collaboration" 
-                        class="w-full h-auto rounded-lg object-cover shadow-lg"
-                    >
-                </div>
-            </div>
-            <div class="md:w-1/2">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Who We Are</h2>
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    At VexTech, we're more than just a technology company. We're innovators, problem-solvers, and digital craftsmen dedicated to transforming businesses through cutting-edge technology solutions.
-                </p>
-                <p class="text-gray-600 mb-8 leading-relaxed">
-                    With years of experience and a passionate team of experts, we've helped numerous businesses across various industries achieve their digital transformation goals.
-                </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center p-4 bg-primary-light bg-opacity-20 rounded-lg">
-                        <h3 class="text-3xl font-bold text-primary-teal mb-2">100+</h3>
-                        <p class="text-gray-600">Projects Completed</p>
+    <!-- Services Section -->
+    <style>
+        @keyframes scrollServices {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .services-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scrollServices 34s linear infinite;
+        }
+        .services-marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .service-card {
+            background: #D4EDED;
+            border-radius: 16px;
+            padding: 36px 40px;
+            display: flex;
+            flex-direction: column;
+            width: max(320px, 34vw);
+            min-height: 300px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .service-card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .service-card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: #091820;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .service-card-title {
+            font-family: 'Cabinet Grotesk', 'Satoshi', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #091820;
+            line-height: 1.2;
+            margin: 0;
+        }
+        .service-card-body {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 14px;
+            color: rgba(9,24,32,0.72);
+            line-height: 1.65;
+            margin: auto 0 0;
+            padding-top: 40px;
+        }
+    </style>
+
+    <section style="width:100%; padding:96px 0 72px; overflow:hidden;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,60px); margin-bottom:44px;">
+            <h2 style="font-family:'Satoshi',sans-serif;font-size:13px;font-weight:500;color:#091820;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 6px;">
+                WHAT CAN WE DO FOR YOU?
+            </h2>
+            <p style="font-family:'Satoshi',sans-serif;font-size:14px;color:rgba(9,24,32,0.55);margin:0;">
+                Delivering cutting-edge solutions to help your business grow in the digital age
+            </p>
+        </div>
+
+        <div style="width:100%; overflow:hidden;">
+            <div class="services-marquee-track">
+
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M8 5L2 12L8 19M16 5L22 12L16 19" stroke="#F8FAFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Mobile & Web Development</h3>
                     </div>
-                    <div class="text-center p-4 bg-primary-light bg-opacity-20 rounded-lg">
-                        <h3 class="text-3xl font-bold text-primary-teal mb-2">50+</h3>
-                        <p class="text-gray-600">Happy Clients</p>
+                    <p class="service-card-body">
+                        We build fast, reliable, and scalable digital products for web and mobile. Whether it's a marketing site, a complex web application, or a cross-platform mobile app, we write clean, maintainable code using modern technologies. From frontend to backend, we handle the full stack so your product is solid from the ground up.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M12 19L19 12M19 12L12 5M19 12H5" stroke="#F8FAFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Design</h3>
+                    </div>
+                    <p class="service-card-body">
+                        We design with intention, from the first spark of a brand identity to the finest detail of a product interface. Our work spans branding, UI/UX, and design systems, always rooted in strategy and shaped around the people who will use it.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M9 5H7C5.895 5 5 5.895 5 7V19C5 20.105 5.895 21 7 21H17C18.105 21 19 20.105 19 19V7C19 5.895 18.105 5 17 5H15M9 5C9 6.105 9.895 7 11 7H13C14.105 7 15 6.105 15 5M9 5C9 3.895 9.895 3 11 3H13C14.105 3 15 3.895 15 5M9 12H15M9 16H15" stroke="#F8FAFB" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Project Management</h3>
+                    </div>
+                    <p class="service-card-body">
+                        We bring structure and clarity to every project, managing timelines, resources, and communication so nothing falls through the cracks. From kickoff to launch, we make sure you always know where things stand, what's coming next, and that the work is in good hands.
+                    </p>
+                </div>
+
+                <!-- Duplicates for seamless loop -->
+                <!-- Card 1 dup -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M8 5L2 12L8 19M16 5L22 12L16 19" stroke="#F8FAFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Mobile & Web Development</h3>
+                    </div>
+                    <p class="service-card-body">
+                        We build fast, reliable, and scalable digital products for web and mobile. Whether it's a marketing site, a complex web application, or a cross-platform mobile app, we write clean, maintainable code using modern technologies. From frontend to backend, we handle the full stack so your product is solid from the ground up.
+                    </p>
+                </div>
+
+                <!-- Card 2 dup -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M12 19L19 12M19 12L12 5M19 12H5" stroke="#F8FAFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Design</h3>
+                    </div>
+                    <p class="service-card-body">
+                        We design with intention, from the first spark of a brand identity to the finest detail of a product interface. Our work spans branding, UI/UX, and design systems, always rooted in strategy and shaped around the people who will use it.
+                    </p>
+                </div>
+
+                <!-- Card 3 dup -->
+                <div class="service-card">
+                    <div class="service-card-top">
+                        <div class="service-card-icon">
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path d="M9 5H7C5.895 5 5 5.895 5 7V19C5 20.105 5.895 21 7 21H17C18.105 21 19 20.105 19 19V7C19 5.895 18.105 5 17 5H15M9 5C9 6.105 9.895 7 11 7H13C14.105 7 15 6.105 15 5M9 5C9 3.895 9.895 3 11 3H13C14.105 3 15 3.895 15 5M9 12H15M9 16H15" stroke="#F8FAFB" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card-title">Project Management</h3>
+                    </div>
+                    <p class="service-card-body">
+                        We bring structure and clarity to every project, managing timelines, resources, and communication so nothing falls through the cracks. From kickoff to launch, we make sure you always know where things stand, what's coming next, and that the work is in good hands.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <style>
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) {
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px 40px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+                align-items: start;
+            }
+        }
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+        .process-step:nth-child(even) {
+            /* stagger even items down on desktop */
+        }
+        @media (min-width: 1024px) {
+            .process-step:nth-child(even) {
+                margin-top: 56px;
+            }
+        }
+        .process-icon-wrap {
+            width: 72px;
+            height: 72px;
+            background: #D4EDED;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .process-step-title {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #091820;
+            margin: 0 0 8px;
+        }
+        .process-step-desc {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 14px;
+            color: rgba(9,24,32,0.60);
+            line-height: 1.65;
+            margin: 0;
+            max-width: 220px;
+        }
+    </style>
+
+    <section style="width:100%; padding:72px clamp(20px,5vw,60px) 80px; background:#F8FAFB;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <h2 style="font-family:'Satoshi',sans-serif;font-size:13px;font-weight:500;color:#091820;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 56px;">
+                HOW WE MAKE THINGS WORK
+            </h2>
+
+            <div class="process-steps">
+
+                <!-- Discovery -->
+                <div class="process-step">
+                    <div class="process-icon-wrap">
+                        <svg width="28" height="28" fill="none" viewBox="0 0 40 40">
+                            <circle cx="20" cy="15" r="8" stroke="#091820" stroke-width="2" fill="none"/>
+                            <path d="M17 22.5v4.5h6v-4.5" stroke="#091820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 30h4M18 33h4" stroke="#091820" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="process-step-title">Discovery</h3>
+                        <p class="process-step-desc">Your goals become our goals. We dig into your needs and project requirements so we're always building toward the right outcome.</p>
                     </div>
                 </div>
+
+                <!-- Planning -->
+                <div class="process-step">
+                    <div class="process-icon-wrap">
+                        <svg width="28" height="28" fill="none" viewBox="0 0 40 40">
+                            <rect x="10" y="8" width="20" height="24" rx="2" stroke="#091820" stroke-width="2"/>
+                            <path d="M15 17h10M15 21h10M15 25h6" stroke="#091820" stroke-width="2" stroke-linecap="round"/>
+                            <rect x="15" y="5" width="10" height="6" rx="1.5" stroke="#091820" stroke-width="1.8"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="process-step-title">Planning</h3>
+                        <p class="process-step-desc">We map out every step of your project with precision, clear roadmaps and technical specifications that keep everyone aligned and moving in the right direction.</p>
+                    </div>
+                </div>
+
+                <!-- Development -->
+                <div class="process-step">
+                    <div class="process-icon-wrap">
+                        <svg width="28" height="28" fill="none" viewBox="0 0 40 40">
+                            <path d="M13 15l-5 5 5 5M27 15l5 5-5 5" stroke="#091820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 10l-4 20" stroke="#091820" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="process-step-title">Development</h3>
+                        <p class="process-step-desc">We build your solution the right way iteratively, transparently, and with regular updates so you're never left wondering what's happening with your project.</p>
+                    </div>
+                </div>
+
+                <!-- Launch -->
+                <div class="process-step">
+                    <div class="process-icon-wrap">
+                        <svg width="28" height="28" fill="none" viewBox="0 0 40 40">
+                            <path d="M20 8c4-4 10-4 12-2s2 8-2 12l-10 10-3-1-1-3 10-10" stroke="#091820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="26" cy="14" r="2" fill="#091820"/>
+                            <path d="M9 22l2 2-4 4-2 2 2-2 4-4z" stroke="#091820" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M8 28l4 4" stroke="#091820" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="process-step-title">Launch</h3>
+                        <p class="process-step-desc">We see your project all the way through, from a smooth carefully handled launch to ongoing support that makes sure everything keeps running at its best.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Services Section -->
-<section class="py-20 bg-primary-light bg-opacity-10">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">What We Can Do For You</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Delivering cutting-edge solutions to help your business grow in the digital age</p>
+    <!-- Projects Section -->
+    <style>
+        @keyframes scrollProjects {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .proj-track {
+            display: flex;
+            width: max-content;
+            animation: scrollProjects 44s linear infinite;
+        }
+        .proj-track:hover {
+            animation-play-state: paused;
+        }
+        .proj-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 300px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .proj-card { width: 360px; }
+        }
+        .proj-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 340px;
+            background: #00A99D;
+        }
+        @media (min-width: 768px) {
+            .proj-img-wrap { height: 420px; }
+        }
+        .proj-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        .proj-card:hover .proj-img-wrap img {
+            transform: scale(1.07);
+        }
+        .proj-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.40);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.28s ease;
+        }
+        .proj-card:hover .proj-overlay {
+            opacity: 1;
+        }
+        .proj-overlay-btn {
+            background: #F8FAFB;
+            color: #091820;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 26px;
+            border-radius: 100px;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        .proj-placeholder-bg {
+            width: 100%;
+            height: 100%;
+            background: #00A99D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .proj-title {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            color: #091820;
+            margin: 0 0 3px;
+        }
+        .proj-type {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 14px;
+            color: rgba(9,24,32,0.50);
+            margin: 0;
+        }
+    </style>
+
+    <section style="width:100%; padding:72px 0 96px; overflow:hidden;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,60px); margin-bottom:44px;">
+            <h2 style="font-family:'Satoshi',sans-serif;font-size:13px;font-weight:500;color:#091820;letter-spacing:0.1em;text-transform:uppercase;margin:0;">
+                EXPLORE SOME OF OUR PROJECTS
+            </h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Web Development -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Web Development</h3>
-                <p class="text-gray-600">Custom websites and web applications built with modern technologies and best practices.</p>
-            </div>
 
-            <!-- Mobile Apps -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Mobile Apps</h3>
-                <p class="text-gray-600">Native and cross-platform mobile applications that deliver exceptional user experiences.</p>
-            </div>
+        <div style="width:100%; overflow:hidden;">
+            <div class="proj-track">
 
-            <!-- UI/UX Design -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">UI/UX Design</h3>
-                <p class="text-gray-600">User-centered design solutions that create engaging and intuitive digital experiences.</p>
-            </div>
-
-            <!-- Project Management -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Project Management</h3>
-                <p class="text-gray-600">Efficient project planning, execution, and delivery using agile methodologies.</p>
-            </div>
-
-            <!-- IT Consultation -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">IT Consultation</h3>
-                <p class="text-gray-600">Strategic technology consulting to help businesses make informed decisions.</p>
-            </div>
-
-            <!-- Branding -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Branding</h3>
-                <p class="text-gray-600">Create compelling brand identities that resonate with your target audience.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Projects We Are Proud Of</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Delivering excellence through innovation and creativity</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {% for project in top_projects %}
-            <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                {% if project.image %}
-                    <img 
-                        src="{{ project.image.url }}"
-                        alt="{{ project.title }}" 
-                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-                    >
-                {% endif %}
-                <div class="absolute inset-0 bg-gradient-to-t from-primary-dark to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300">
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">{{ project.title }}</h3>
-                        <p class="text-primary-light text-sm mb-4">{{ project.project_type }}</p>
-                        {% if project.link %}
-                        <a href="{{ project.link }}" target="_blank"
-                           class="inline-block px-4 py-2 rounded bg-primary-teal text-white font-semibold shadow hover:bg-primary-dark transition-colors duration-200">
-                            View Project →
-                        </a>
+                {% for project in top_projects %}
+                <div class="proj-card">
+                    <div class="proj-img-wrap">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="proj-placeholder-bg">
+                            <span style="font-family:'Satoshi',sans-serif;font-size:52px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-2px;">VEX</span>
+                        </div>
                         {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-span-3 text-center text-gray-500 py-12">
-                No featured projects yet.
-            </div>
-            {% endfor %}
-        </div>
-        
-        <div class="text-center mt-12">
-            <a href="{% url 'projects' %}" class="inline-flex items-center space-x-2 text-primary-teal hover:text-primary-dark transition">
-                <span>View All Projects</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<!-- Our Process Section -->
-<section class="py-20 bg-primary-light bg-opacity-10">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Process</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">A systematic approach to delivering exceptional results</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Step 1 -->
-            <div class="relative p-6">
-                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">1</div>
-                    <h3 class="text-xl font-bold text-primary-dark mb-3">Discovery</h3>
-                    <p class="text-gray-600">Understanding your needs, goals, and project requirements</p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative p-6">
-                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">2</div>
-                    <h3 class="text-xl font-bold text-primary-dark mb-3">Planning</h3>
-                    <p class="text-gray-600">Creating detailed project roadmap and technical specifications</p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative p-6">
-                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">3</div>
-                    <h3 class="text-xl font-bold text-primary-dark mb-3">Development</h3>
-                    <p class="text-gray-600">Building your solution with agile methodology and regular updates</p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-primary-teal -translate-y-1/2 z-0"></div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative p-6">
-                <div class="bg-white rounded-lg p-6 shadow-md relative z-10">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">4</div>
-                    <h3 class="text-xl font-bold text-primary-dark mb-3">Launch</h3>
-                    <p class="text-gray-600">Deploying your solution and providing ongoing support</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">What Our Clients Say</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Hear from businesses we've helped transform</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold text-white">SJ</span>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="text-lg font-semibold text-primary-dark">Sarah Johnson</h4>
-                        <p class="text-sm text-gray-600">CEO, TechStart</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 italic">"VexTech transformed our business with their innovative solutions. Their team's expertise and dedication to quality is unmatched."</p>
-                <div class="flex mt-4 text-primary-teal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold text-white">MA</span>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="text-lg font-semibold text-primary-dark">Mark Anderson</h4>
-                        <p class="text-sm text-gray-600">CTO, HealthTech Solutions</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 italic">"The mobile app VexTech developed for us has revolutionized how we interact with our patients. Their technical expertise and healthcare industry knowledge were invaluable."</p>
-                <div class="flex mt-4 text-primary-teal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="bg-primary-light bg-opacity-5 p-8 rounded-lg">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold text-white">EC</span>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="text-lg font-semibold text-primary-dark">Emily Chen</h4>
-                        <p class="text-sm text-gray-600">Founder, EcoStyle</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 italic">"From concept to launch, VexTech delivered beyond our expectations. Their UI/UX expertise helped us create an e-commerce platform that our customers love."</p>
-                <div class="flex mt-4 text-primary-teal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Add 2 more testimonials with different client info and quotes -->
-        </div>
-    </div>
-</section>
-
-
-<!-- Newsletter & Contact Section -->
-<section class="py-20 bg-primary-dark">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Newsletter -->
-            <div class="bg-white rounded-lg p-8 shadow-lg">
-                <h3 class="text-2xl font-bold text-primary-dark mb-6">Stay Updated</h3>
-                <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest tech insights and company updates.</p>
-                <form class="space-y-4" method="POST" action="">
-                    {% csrf_token %}
-                    {% if newsletter_success %}
-                        <div class="p-3 bg-green-100 text-green-700 rounded">Thank you for subscribing!</div>
-                    {% endif %}
-                    <div>
-                        <input 
-                            name="email"
-                            required
-                            type="email" 
-                            placeholder="Enter your email" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
-                        >
-                    </div>
-                    <button type="submit" class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-
-            <!-- Contact -->
-            <div class="bg-white rounded-lg p-8 shadow-lg">
-                <h3 class="text-2xl font-bold text-primary-dark mb-6">Let's Talk About Your Project</h3>
-                <p class="text-gray-600 mb-6">Ready to transform your idea into reality? Get in touch with us.</p>
-                <form class="space-y-4" method="POST" action="">
-                    {% csrf_token %}
-                    {% if contact_success %}
-                        <div class="p-3 bg-green-100 text-green-700 rounded">Your message has been sent!</div>
-                    {% endif %}
-                    <div>
-                        <input 
-                            name="name"
-                            required
-                            type="text" 
-                            placeholder="Your Name" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
-                        >
+                        <div class="proj-overlay">
+                            <a href="{% url 'projects' %}" class="proj-overlay-btn">View Project</a>
+                        </div>
                     </div>
                     <div>
-                        <input 
-                            name="email"
-                            required
-                            type="email" 
-                            placeholder="Your Email" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
-                        >
+                        <p class="proj-title">{{ project.title }}</p>
+                        <p class="proj-type">{{ project.get_project_type_display }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                {% for ph in "1234" %}
+                <div class="proj-card">
+                    <div class="proj-img-wrap">
+                        <div class="proj-placeholder-bg"></div>
+                        <div class="proj-overlay">
+                            <a href="{% url 'projects' %}" class="proj-overlay-btn">View Project</a>
+                        </div>
                     </div>
                     <div>
-                        <input 
-                            name="subject"
-                            required
-                            type="text" 
-                            placeholder="Subject" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
-                        >
+                        <p class="proj-title">Project {{ forloop.counter }}</p>
+                        <p class="proj-type">Project Description</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+
+                <!-- Duplicate track for seamless loop -->
+                {% for project in top_projects %}
+                <div class="proj-card">
+                    <div class="proj-img-wrap">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="proj-placeholder-bg">
+                            <span style="font-family:'Satoshi',sans-serif;font-size:52px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-2px;">VEX</span>
+                        </div>
+                        {% endif %}
+                        <div class="proj-overlay">
+                            <a href="{% url 'projects' %}" class="proj-overlay-btn">View Project</a>
+                        </div>
                     </div>
                     <div>
-                        <textarea 
-                            name="message"
-                            required
-                            placeholder="Tell us about your project" 
-                            rows="4" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-teal focus:border-transparent"
-                        ></textarea>
+                        <p class="proj-title">{{ project.title }}</p>
+                        <p class="proj-type">{{ project.get_project_type_display }}</p>
                     </div>
-                    <button type="submit" class="w-full bg-primary-teal text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
-                        Send Message
-                    </button>
-                </form>
+                </div>
+                {% empty %}
+                {% for ph in "1234" %}
+                <div class="proj-card">
+                    <div class="proj-img-wrap">
+                        <div class="proj-placeholder-bg"></div>
+                        <div class="proj-overlay">
+                            <a href="{% url 'projects' %}" class="proj-overlay-btn">View Project</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="proj-title">Project {{ forloop.counter }}</p>
+                        <p class="proj-type">Project Description</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 {% endblock content %}

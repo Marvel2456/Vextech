@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.utils.text import slugify
 from django.utils.timezone import now
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
@@ -65,8 +66,15 @@ class Project(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
+        # Generate a unique slug once per record to avoid IntegrityError on duplicates
         if not self.slug:
-            self.slug = self.name.lower().replace(' ', '-')
+            base = slugify(self.title or self.name or str(uuid.uuid4()))
+            slug_candidate = base or str(uuid.uuid4())
+            suffix = 1
+            while Project.objects.filter(slug=slug_candidate).exclude(pk=self.pk).exists():
+                slug_candidate = f"{base}-{suffix}"
+                suffix += 1
+            self.slug = slug_candidate
         super().save(*args, **kwargs)
 
     class Meta:

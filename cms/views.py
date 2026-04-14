@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from .models import ContactMessage, NewsletterSubscription, Visit, Service, Project
 from django.db.models import Count
 
+
 from django.template.response import TemplateResponse
 
 
@@ -60,8 +61,16 @@ def logoutView(request):
 
 @login_required(login_url='login')
 def dashboard(request):
+    total_visits = Visit.objects.count()
+    total_newsletters = NewsletterSubscription.objects.count()
+    total_projects = Project.objects.count()
+    total_contacts = ContactMessage.objects.count()
     context = {
-        "first_name": request.user.name.split()[0]
+        "first_name": request.user.name.split()[0],
+        "total_visits": total_visits,
+        "total_newsletters": total_newsletters,
+        "total_projects": total_projects,
+        "total_contacts": total_contacts,
     }
     return render(request, 'cms/dashboard.html', context)
 

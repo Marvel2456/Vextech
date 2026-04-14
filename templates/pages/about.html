@@ -1,155 +1,326 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About Us{% endblock title %}
+{% block title %}About VexTech | Building Digital Excellence{% endblock title %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="py-20 bg-primary-dark">
-    <div class="container mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Building Digital Excellence Since 2020</h1>
-            <p class="text-gray-300 text-lg mb-8">We're a team of passionate technologists dedicated to transforming businesses through innovative digital solutions.</p>
-        </div>
-    </div>
+<style>
+  /* ---- ABOUT PAGE ---- */
+
+  /* Hero */
+  .ab-hero {
+    margin-top: 56px;
+    background: #F8FAFB;
+    padding: clamp(72px,11vw,130px) 0 clamp(48px,7vw,90px);
+    position: relative;
+    overflow: hidden;
+  }
+  .ab-hero-blob {
+    position: absolute;
+    width: clamp(320px,48vw,600px);
+    height: clamp(320px,48vw,600px);
+    border-radius: 50%;
+    background: rgba(9,24,32,0.05);
+    filter: blur(56px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -50%);
+    pointer-events: none;
+  }
+  .ab-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(16px,2.5vw,36px);
+    position: relative;
+  }
+  .ab-hero-heading {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(42px,7.5vw,96px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -2.5px;
+    color: #091820;
+    max-width: 920px;
+  }
+
+  /* Mission & Vision */
+  .ab-mv-section {
+    background: #F8FAFB;
+    padding: clamp(64px,9vw,110px) 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ab-mv-blob {
+    position: absolute;
+    width: clamp(340px,46vw,580px);
+    height: clamp(340px,46vw,580px);
+    border-radius: 50%;
+    background: rgba(9,24,32,0.04);
+    filter: blur(52px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .ab-mv-inner {
+    position: relative;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    padding: 0 clamp(16px,2.5vw,36px);
+  }
+  .ab-mv-text {
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(14px,1.1vw,16px);
+    line-height: 1.7;
+    color: #091820;
+    text-align: center;
+  }
+
+  /* Values */
+  .ab-values-section {
+    background: #F8FAFB;
+    padding: clamp(64px,9vw,110px) 0;
+  }
+  .ab-values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 52px;
+    align-items: start;
+  }
+  @media(min-width:900px) {
+    .ab-values-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  }
+  .ab-values-intro {
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(14px,1.1vw,16px);
+    line-height: 1.7;
+    color: #091820;
+    max-width: 420px;
+  }
+  .ab-values-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+  .ab-val-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 8px;
+  }
+  .ab-val-icon {
+    background: #D4EDED;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ab-val-icon svg { width: 32px; height: 32px; }
+  .ab-val-name {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #091820;
+    text-align: center;
+    margin: 0;
+  }
+  .ab-val-desc {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px;
+    color: rgba(9,24,32,0.55);
+    text-align: center;
+    max-width: 190px;
+    margin: 0;
+  }
+
+  /* Founders */
+  .ab-founders-section {
+    background: #F8FAFB;
+    padding: clamp(64px,9vw,110px) 0;
+  }
+  .ab-founders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .ab-founder-row {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  @media(min-width:640px) {
+    .ab-founder-row { flex-direction: row; align-items: flex-start; gap: 40px; }
+    .ab-founder-row.reverse { flex-direction: row-reverse; }
+  }
+  .ab-founder-img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .ab-founder-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 4px;
+  }
+  .ab-founder-name {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #091820;
+    margin: 0;
+  }
+  .ab-founder-role {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #00A99D;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin: 0;
+  }
+  .ab-founder-bio {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(9,24,32,0.65);
+    margin: 8px 0 0;
+  }
+
+  /* Big Icon */
+  .ab-icon-section {
+    background: #F8FAFB;
+    padding: clamp(80px,12vw,160px) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ab-big-icon svg {
+    opacity: 0.17;
+    width: clamp(100px,14vw,173px);
+    height: auto;
+    display: block;
+  }
+</style>
+
+<!-- Hero -->
+<section class="ab-hero">
+  <div class="ab-hero-blob"></div>
+  <div class="ab-inner">
+    <h1 class="ab-hero-heading">We build digital products that mean business.</h1>
+  </div>
 </section>
 
-<!-- Our Story Section -->
-<section class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Our Story</h2>
-            <p class="text-gray-600">From a small startup to a leading tech innovator, our journey has been driven by the passion to create meaningful digital experiences.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-12 h-12 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <span class="text-white font-bold">1</span>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">The Beginning</h3>
-                <p class="text-gray-600">Founded in 2020 with a vision to bridge the gap between technology and business needs.</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-12 h-12 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <span class="text-white font-bold">2</span>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Growth</h3>
-                <p class="text-gray-600">Expanded our team and services to meet the growing demands of digital transformation.</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-12 h-12 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <span class="text-white font-bold">3</span>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Today</h3>
-                <p class="text-gray-600">Trusted partner for businesses worldwide, delivering innovative solutions that drive success.</p>
-            </div>
-        </div>
-    </div>
+<!-- Mission & Vision -->
+<section class="ab-mv-section">
+  <div class="ab-mv-blob"></div>
+  <div class="ab-mv-inner">
+    <p class="ab-mv-text">Our mission is to help businesses grow through smart technology and thoughtful design. We build digital products that solve real problems, create meaningful experiences, and deliver lasting value—not just to the businesses we work with, but to the people they serve every day.</p>
+    <p class="ab-mv-text">Our vision is to set the standard for what great technology partnership looks like, trusted by businesses around the world to deliver, every time.</p>
+  </div>
 </section>
 
-<!-- Mission & Vision Section -->
-<section class="py-20 bg-primary-dark">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Mission -->
-            <div class="p-8 bg-white rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold text-primary-dark mb-6">Our Mission</h3>
-                <p class="text-gray-600">To empower businesses through innovative technology solutions, enabling them to thrive in the digital age while delivering exceptional value to their customers.</p>
-            </div>
-            <!-- Vision -->
-            <div class="p-8 bg-white rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold text-primary-dark mb-6">Our Vision</h3>
-                <p class="text-gray-600">To be the leading technology partner for businesses worldwide, known for our innovation, reliability, and commitment to excellence in digital transformation.</p>
-            </div>
+<!-- Values -->
+<section class="ab-values-section">
+  <div class="ab-inner">
+    <div class="ab-values-grid">
+
+      <p class="ab-values-intro">Great work comes from the right principles. Our values keep us grounded, accountable, and focused on what matters most—doing right by our clients and delivering work we're proud of.</p>
+
+      <div class="ab-values-cards">
+
+        <!-- Innovate -->
+        <div class="ab-val-card">
+          <div class="ab-val-icon">
+            <svg fill="none" viewBox="0 0 40 40"><path d="M18.1638 36.0158V33.5588C18.1638 33.0401 18.3401 32.6044 18.6929 32.2517C19.0457 31.8986 19.4814 31.7221 20 31.7221C20.5186 31.7221 20.9543 31.8986 21.3071 32.2517C21.6599 32.6044 21.8363 33.0401 21.8363 33.5588V36.0158C21.8363 36.5447 21.6599 36.9856 21.3071 37.3383C20.9543 37.6914 20.5186 37.8679 20 37.8679C19.4814 37.8679 19.0457 37.6914 18.6929 37.3383C18.3401 36.9856 18.1638 36.5447 18.1638 36.0158ZM3.98417 18.1637H6.44125C6.95986 18.1637 7.39556 18.3401 7.74833 18.6929C8.10139 19.0457 8.27792 19.4814 8.27792 20C8.27792 20.5186 8.10139 20.9543 7.74833 21.3071C7.39556 21.6599 6.95986 21.8363 6.44125 21.8363H3.98417C3.45528 21.8363 3.01444 21.6599 2.66167 21.3071C2.30861 20.9543 2.13208 20.5186 2.13208 20C2.13208 19.4814 2.30861 19.0457 2.66167 18.6929C3.01444 18.3401 3.45528 18.1637 3.98417 18.1637ZM33.5587 18.1637H36.0313C36.5499 18.1637 36.9856 18.3401 37.3383 18.6929C37.6914 19.0457 37.8679 19.4814 37.8679 20C37.8679 20.5186 37.6914 20.9543 37.3383 21.3071C36.9856 21.6599 36.5499 21.8363 36.0313 21.8363H33.5587C33.0401 21.8363 32.6044 21.6599 32.2517 21.3071C31.8986 20.9543 31.7221 20.5186 31.7221 20C31.7221 19.4814 31.8986 19.0457 32.2517 18.6929C32.6044 18.3401 33.0401 18.1637 33.5587 18.1637Z" fill="#091820"/></svg>
+          </div>
+          <p class="ab-val-name">Innovate</p>
+          <p class="ab-val-desc">Pushing boundaries to create cutting-edge solutions.</p>
         </div>
+
+        <!-- Excellence -->
+        <div class="ab-val-card">
+          <div class="ab-val-icon">
+            <svg fill="none" viewBox="0 0 40 40"><path d="M20 24.125L23.0246 25.9533C23.3671 26.1736 23.7018 26.1594 24.0287 25.9108C24.3554 25.6622 24.4758 25.3407 24.39 24.9463L23.5833 21.5417L26.2504 19.2067C26.5646 18.9361 26.6564 18.6125 26.5258 18.2358C26.395 17.8592 26.1278 17.6492 25.7242 17.6058L22.2083 17.3333L20.8508 14.0821C20.6942 13.6996 20.4107 13.5083 20.0004 13.5083C19.5899 13.5083 19.3061 13.6996 19.1492 14.0821L17.7917 17.3333L14.2758 17.6058C13.8722 17.6492 13.605 17.8592 13.4742 18.2358C13.3436 18.6125 13.4354 18.9361 13.7496 19.2067L16.4167 21.5417L15.6254 24.9463C15.5293 25.3357 15.6451 25.656 15.9729 25.9071C16.3004 26.1582 16.6346 26.1736 16.9754 25.9533L20 24.125ZM14.3192 33.9929H9.68C8.65389 33.9929 7.78528 33.6372 7.07417 32.9258C6.36278 32.2147 6.00708 31.3461 6.00708 30.32V25.6967L2.90833 22.5725C2.55083 22.2108 2.28625 21.8092 2.11458 21.3675C1.94319 20.9258 1.8575 20.4717 1.8575 20.005C1.8575 19.5386 1.94319 19.0828 2.11458 18.6375C2.28625 18.1925 2.55083 17.7892 2.90833 17.4275L6.00708 14.3033V9.68C6.00708 8.64944 6.36278 7.77708 7.07417 7.06292C7.78528 6.34875 8.65389 5.99167 9.68 5.99167H14.3033L17.4275 2.90833C17.7942 2.55083 18.2036 2.28625 18.6558 2.11458C19.1083 1.94319 19.5676 1.8575 20.0337 1.8575C20.5001 1.8575 20.9529 1.94972 21.3921 2.13416C21.8315 2.31833 22.2343 2.58556 22.6004 2.93583L25.6854 5.99167H30.32C31.3506 5.99167 32.2229 6.34875 32.9371 7.06292C33.6512 7.77708 34.0083 8.64944 34.0083 9.68V14.3033L37.0917 17.4275C37.4492 17.7942 37.7137 18.1974 37.8854 18.6371C38.0568 19.0765 38.1425 19.5293 38.1425 19.9954C38.1425 20.4615 38.0568 20.9158 37.8854 21.3583C37.7137 21.8011 37.4492 22.2058 37.0917 22.5725L34.0083 25.6967V30.32C34.0083 31.3461 33.6512 32.2147 32.9371 32.9258C32.2229 33.6372 31.3506 33.9929 30.32 33.9929H25.6854L22.6004 37.0362C22.2396 37.3882 21.8382 37.6513 21.3962 37.8254C20.9543 37.9999 20.5 38.0871 20.0333 38.0871C19.5667 38.0871 19.1111 37.9999 18.6667 37.8254C18.2219 37.6513 17.8182 37.3882 17.4554 37.0362L14.3192 33.9929Z" fill="#091820"/></svg>
+          </div>
+          <p class="ab-val-name">Excellence</p>
+          <p class="ab-val-desc">Committed to delivering the highest quality in everything.</p>
+        </div>
+
+        <!-- Collaborate -->
+        <div class="ab-val-card">
+          <div class="ab-val-icon">
+            <svg fill="none" viewBox="0 0 40 40"><path d="M18.7137 12.9867L15.5004 9.75375C15.1337 9.38681 14.9504 8.95278 14.9504 8.45167C14.9504 7.95056 15.1337 7.51653 15.5004 7.14958L18.7137 3.91667C19.0804 3.55 19.5131 3.36667 20.0117 3.36667C20.5103 3.36667 20.9429 3.55 21.3096 3.91667L24.5508 7.14958C24.9175 7.51653 25.1008 7.95056 25.1008 8.45167C25.1008 8.95278 24.9175 9.38681 24.5508 9.75375L21.3096 12.9867C20.9429 13.3533 20.5103 13.5367 20.0117 13.5367C19.5131 13.5367 19.0804 13.3533 18.7137 12.9867ZM2.74167 34.6208C2.22306 34.6208 1.78736 34.4444 1.43458 34.0917C1.08153 33.7386 0.904999 33.3029 0.904999 32.7846V27.5067C0.904999 26.5344 1.25083 25.7075 1.9425 25.0258C2.63389 24.3444 3.45583 24.0038 4.40833 24.0038H10.27C10.8067 24.0038 11.2796 24.1104 11.6887 24.3238C12.0979 24.5371 12.4396 24.8378 12.7137 25.2258C13.5507 26.4222 14.6087 27.351 15.8879 28.0121C17.1671 28.6732 18.5378 29.0038 20 29.0038C21.4558 29.0038 22.8272 28.6732 24.1142 28.0121C25.4011 27.351 26.4756 26.4222 27.3375 25.2258C27.5989 24.8378 27.9311 24.5371 28.3342 24.3238C28.7375 24.1104 29.2081 24.0038 29.7458 24.0038H35.6154C36.5876 24.0038 37.4146 24.3444 38.0963 25.0258C38.7776 25.7075 39.1183 26.5344 39.1183 27.5067V32.7846C39.1183 33.3029 38.9419 33.7386 38.5892 34.0917C38.2364 34.4444 37.8007 34.6208 37.2821 34.6208H28.9488C28.4301 34.6208 27.9944 34.4444 27.6417 34.0917C27.2889 33.7386 27.1125 33.3029 27.1125 32.7846V29.8867C26.1111 30.6453 25.0042 31.2344 23.7917 31.6542C22.5792 32.0739 21.3153 32.2837 20 32.2837C18.7044 32.2837 17.4514 32.0756 16.2408 31.6592C15.0303 31.2428 13.9204 30.6499 12.9112 29.8804V32.7846C12.9112 33.3029 12.7349 33.7386 12.3821 34.0917C12.029 34.4444 11.5933 34.6208 11.075 34.6208H2.74167ZM6.66667 20.7188C5.31806 20.7188 4.1625 20.2374 3.2 19.2746C2.23722 18.3121 1.75583 17.1513 1.75583 15.7921C1.75583 14.4315 2.23722 13.2729 3.2 12.3163C4.1625 11.3599 5.31806 10.8817 6.66667 10.8817C8.03778 10.8817 9.20167 11.3599 10.1583 12.3163C11.1147 13.2729 11.5929 14.4315 11.5929 15.7921C11.5929 17.1513 11.1147 18.3121 10.1583 19.2746C9.20167 20.2374 8.03778 20.7188 6.66667 20.7188ZM33.3333 20.7188C31.9847 20.7188 30.8292 20.2374 29.8667 19.2746C28.9039 18.3121 28.4225 17.1513 28.4225 15.7921C28.4225 14.4315 28.9039 13.2729 29.8667 12.3163C30.8292 11.3599 31.9847 10.8817 33.3333 10.8817C34.7044 10.8817 35.8683 11.3599 36.825 12.3163C37.7814 13.2729 38.2596 14.4315 38.2596 15.7921C38.2596 17.1513 37.7814 18.3121 36.825 19.2746C35.8683 20.2374 34.7044 20.7188 33.3333 20.7188Z" fill="#091820"/></svg>
+          </div>
+          <p class="ab-val-name">Collaborate</p>
+          <p class="ab-val-desc">Working together to achieve exceptional results.</p>
+        </div>
+
+        <!-- Adaptive -->
+        <div class="ab-val-card">
+          <div class="ab-val-icon">
+            <svg fill="none" viewBox="0 0 40 40"><path d="M26.5742 28.5271L28.37 26.7912C28.6233 26.5351 28.75 26.2475 28.75 25.9283C28.75 25.6094 28.6233 25.3233 28.37 25.07L22.4867 19.1571C22.5744 18.8429 22.6528 18.5194 22.7217 18.1867C22.7906 17.8536 22.825 17.4935 22.825 17.1062C22.825 15.4679 22.2461 14.0697 21.0883 12.9117C19.9303 11.7539 18.5293 11.175 16.8854 11.175C16.5696 11.175 16.2544 11.2053 15.94 11.2658C15.6258 11.3267 15.3133 11.4151 15.0025 11.5312C14.7331 11.6768 14.5494 11.8789 14.4517 12.1375C14.3539 12.3964 14.406 12.6219 14.6079 12.8142L17.4279 15.6062L15.4171 17.5417L12.6762 14.8283C12.4926 14.6553 12.27 14.5886 12.0083 14.6283C11.7467 14.6681 11.5617 14.8089 11.4533 15.0508C11.3122 15.3783 11.2069 15.7225 11.1375 16.0833C11.0683 16.4442 11.0338 16.7917 11.0338 17.1258C11.0338 18.7514 11.5982 20.1265 12.7271 21.2513C13.856 22.376 15.2356 22.9383 16.8658 22.9383C17.2089 22.9383 17.5586 22.9138 17.915 22.8646C18.2714 22.8157 18.6224 22.7368 18.9679 22.6279L24.8296 28.5271C25.0715 28.7618 25.3642 28.8792 25.7075 28.8792C26.0506 28.8792 26.3394 28.7618 26.5742 28.5271ZM20 37.3263C17.6083 37.3263 15.3594 36.8736 13.2533 35.9683C11.1472 35.0633 9.31 33.8267 7.74167 32.2583C6.17333 30.69 4.93667 28.8528 4.03167 26.7467C3.12639 24.6406 2.67375 22.3917 2.67375 20C2.67375 17.5897 3.12639 15.3315 4.03167 13.2254C4.93667 11.1193 6.17333 9.2868 7.74167 7.72792C9.31 6.16875 11.1472 4.93403 13.2533 4.02375C15.3594 3.11347 17.6083 2.65833 20 2.65833C22.4103 2.65833 24.6685 3.11347 26.7746 4.02375C28.8807 4.93403 30.7132 6.16875 32.2721 7.72792C33.8313 9.2868 35.066 11.1193 35.9763 13.2254C36.8865 15.3315 37.3417 17.5897 37.3417 20C37.3417 22.3917 36.8865 24.6406 35.9763 26.7467C35.066 28.8528 33.8313 30.69 32.2721 32.2583C30.7132 33.8267 28.8807 35.0633 26.7746 35.9683C24.6685 36.8736 22.4103 37.3263 20 37.3263ZM20 33.6533C23.8075 33.6533 27.035 32.3276 29.6825 29.6762C32.3297 27.0249 33.6533 23.7994 33.6533 20C33.6533 16.1925 32.3297 12.965 29.6825 10.3175C27.035 7.67028 23.8075 6.34667 20 6.34667C16.2006 6.34667 12.9751 7.67028 10.3238 10.3175C7.67236 12.965 6.34667 16.1925 6.34667 20C6.34667 23.7994 7.67236 27.0249 10.3238 29.6762C12.9751 32.3276 16.2006 33.6533 20 33.6533Z" fill="#091820"/></svg>
+          </div>
+          <p class="ab-val-name">Adaptive</p>
+          <p class="ab-val-desc">Embracing change and staying ahead of technology trends.</p>
+        </div>
+
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- Our Values Section -->
-<section class="py-20 bg-primary-light bg-opacity-20">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-16">Our Values</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Innovation</h3>
-                <p class="text-gray-600">Pushing boundaries to create cutting-edge solutions.</p>
-            </div>
-            
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Collaboration</h3>
-                <p class="text-gray-600">Working together to achieve exceptional results.</p>
-            </div>
+<!-- Founders -->
+<section class="ab-founders-section">
+  <div class="ab-inner">
+    <div class="ab-founders-list">
 
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Excellence</h3>
-                <p class="text-gray-600">Committed to delivering the highest quality in everything we do.</p>
-            </div>
-
-            <div class="p-6 bg-white rounded-lg shadow-md">
-                <div class="w-14 h-14 bg-primary-teal rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-primary-dark mb-3">Adaptability</h3>
-                <p class="text-gray-600">Embracing change and staying ahead of technology trends.</p>
-            </div>
+      <!-- Eseosa -->
+      <div class="ab-founder-row">
+        <img src="{% static 'images/4Z9A8036.jpg' %}" alt="Eseosa Idemudia" class="ab-founder-img">
+        <div class="ab-founder-info">
+          <p class="ab-founder-name">Eseosa Idemudia</p>
+          <p class="ab-founder-role">Co-Founder &amp; CEO</p>
+          <p class="ab-founder-bio">Tech visionary with expertise in software development and business strategy. Leading VexTech's mission to transform businesses through technology.</p>
         </div>
+      </div>
+
+      <!-- Etinosa -->
+      <div class="ab-founder-row reverse">
+        <img src="{% static 'images/4Z9A8029.jpg' %}" alt="Etinosa Idemudia" class="ab-founder-img">
+        <div class="ab-founder-info">
+          <p class="ab-founder-name">Etinosa Idemudia</p>
+          <p class="ab-founder-role">Co-Founder &amp; CTO</p>
+          <p class="ab-founder-bio">Technical innovator specializing in software architecture and emerging technologies. Driving VexTech's technological advancement and innovation.</p>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- Team Section -->
-<section class="py-20">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-16">Our Co-Founders</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <!-- Co-Founder 1 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-primary-dark mb-2">Eseosa Idemudia</h3>
-                    <p class="text-primary-teal mb-4">Co-Founder & CEO</p>
-                    <p class="text-gray-600 mb-4">Tech visionary with expertise in software development and business strategy. Leading VexTech's mission to transform businesses through technology.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary-teal transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Co-Founder 2 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-primary-dark mb-2">Etinosa Idemudia</h3>
-                    <p class="text-primary-teal mb-4">Co-Founder & CTO</p>
-                    <p class="text-gray-600 mb-4">Technical innovator specializing in software architecture and emerging technologies. Driving VexTech's technological advancement and innovation.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary-teal transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Big Icon -->
+<section class="ab-icon-section">
+  <div class="ab-big-icon">
+    <svg fill="none" viewBox="0 0 173 163" xmlns="http://www.w3.org/2000/svg">
+      <path d="M173.003 0V94.5311L144.895 94.6744L144.632 46.1071L94.0221 92.7076C101.069 95.4811 107.053 99.3115 111.996 104.205C116.94 109.099 120.72 114.669 123.334 120.893C125.937 127.124 127.261 133.918 127.301 141.252L127.411 162.33L90.8753 162.523L90.7653 142.615C90.7486 138.241 89.7885 134.341 87.8984 130.914C86.0083 127.487 83.4148 124.7 80.1246 122.52C76.8344 120.357 73.2309 119.13 69.3307 118.833L40.9857 162.78L0 163L36.2621 110.576C29.8451 107.329 24.4781 103.378 20.1512 98.7147C15.8342 94.051 12.4874 88.7706 10.1206 82.8434C7.74712 76.9263 6.54371 70.6091 6.50704 63.8919L6.39704 42.8135L42.9325 42.6202L43.0358 61.8251C43.0525 65.572 43.8159 69.049 45.316 72.2359C46.8094 75.4328 48.8528 78.0697 51.4463 80.1732C54.0331 82.2601 56.89 83.7669 60.0168 84.6936L123.15 28.1556L78.3145 28.3923L78.1712 0.00333361H172.997L173.003 0Z" fill="#091820"/>
+    </svg>
+  </div>
 </section>
+
 {% endblock content %}
